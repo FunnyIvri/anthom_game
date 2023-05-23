@@ -63,7 +63,7 @@ function updateRemainingTime() {
 }
 
 function handleAudioEnd() {
-    remainingTimeElement.textContent = 'GAME OVER';
+    lose()
   }
 
 }
@@ -128,12 +128,25 @@ function lose() {
      //stop music
      var audio = document.getElementById('anthom_player');
      audio.pause()
+
+    //find the answer
+    var answer = document.getElementById('answer');
+    var raw_correct_country = answer.textContent.split(".mp3")[0]
+    var clean_correct_country = []
+    for (let i = 0; i < raw_correct_country.length; i++) {
+        const correct_letter = raw_correct_country[i];
+        if(correct_letter == "-"){clean_correct_country.push(" ")}
+        else{clean_correct_country.push(correct_letter)}
+        
+    }
+    clean_correct_country = clean_correct_country.join("")
      //let the player know they won
      console.log("you lose :(")
      var h1 = document.getElementById("winText")
      var time = document.getElementById("remainingTime")
      time.style.color = "red"
-     h1.textContent = "YOU WIN!"
+     h1.textContent = "you lost :("
+     time.textContent = "The Country Was: "+clean_correct_country[0].toUpperCase() + clean_correct_country.split(0,1)
      h1.style.color = "red"
      //restart the game
      restart()
