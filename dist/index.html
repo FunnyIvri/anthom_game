@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>anthom game!</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="./main.js"></script>
+</head>
+<body  onkeydown="lib.handleKeyDown(event)">
+  <audio id="anthom_player"></audio>
+  <header>
+    <h1>Anthemle</h1>
+  </header>
+
+  <main>
+    <h1 id="winText"></h1>
+    <h1 id="remainingTime"></h1>
+    <div id="startButtonContainer">
+    <button onclick="lib.play()" id="play_button">play</button></div>
+    <input readonly type="text" id="country_input" placeholder="country name" >
+    <h2 id = "lose"></h2>
+    
+    <div id="keyboard">
+      <div>
+        <button onclick="lib.handleKey('Q')" id="key-Q" class="key">Q</button>
+        <button onclick="lib.handleKey('W')" id="key-W" class="key">W</button>
+        <button onclick="lib.handleKey('E')" id="key-E" class="key">E</button>
+        <button onclick="lib.handleKey('R')" id="key-R" class="key">R</button>
+        <button onclick="lib.handleKey('T')" id="key-T" class="key">T</button>
+        <button onclick="lib.handleKey('Y')" id="key-Y" class="key">Y</button>
+        <button onclick="lib.handleKey('U')" id="key-U" class="key">U</button>
+        <button onclick="lib.handleKey('I')" id="key-I" class="key">I</button>
+        <button onclick="lib.handleKey('O')" id="key-O" class="key">O</button>
+        <button onclick="lib.handleKey('P')" id="key-P" class="key">P</button>
+      </div>
+      <div>
+        <button onclick="lib.handleKey('A')" id="key-A" class="key">A</button>
+        <button onclick="lib.handleKey('S')" id="key-S" class="key">S</button>
+        <button onclick="lib.handleKey('D')" id="key-D" class="key">D</button>
+        <button onclick="lib.handleKey('F')" id="key-F" class="key">F</button>
+        <button onclick="lib.handleKey('G')" id="key-G" class="key">G</button>
+        <button onclick="lib.handleKey('H')" id="key-H" class="key">H</button>
+        <button onclick="lib.handleKey('J')" id="key-J" class="key">J</button>
+        <button onclick="lib.handleKey('K')" id="key-K" class="key">K</button>
+        <button onclick="lib.handleKey('L')" id="key-L" class="key">L</button>
+      </div>
+      <div>
+        <button onclick="lib.handleKey('Z')" id="key-Z" class="key">Z</button>
+        <button onclick="lib.handleKey('X')" id="key-X" class="key">X</button>
+        <button onclick="lib.handleKey('C')" id="key-C" class="key">C</button>
+        <button onclick="lib.handleKey('V')" id="key-V" class="key">V</button>
+        <button onclick="lib.handleKey('B')" id="key-B" class="key">B</button>
+        <button onclick="lib.handleKey('N')" id="key-N" class="key">N</button>
+        <button onclick="lib.handleKey('M')" id="key-M" class="key">M</button>
+        
+      </div> 
+      <div>
+        <button id = "enter_button" onclick="lib.getInputValue()">enter</button>
+        <button onclick="lib.handleKey(' ')" id="key-space" class="key">space</button></div>
+    </div> 
+  </main>
+
+  
+
+
+
+  <footer>
+   
+    <h6 id = "answer"></h6>
+  </footer>
+  
+ 
+  
+</body>
+</html>
