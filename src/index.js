@@ -100,8 +100,10 @@ export  function handleKeyDown(event) {
     }
     else{
 
-        var input = document.getElementById('country_input');
-        input.value = input.value + String.fromCharCode(event.keyCode).toLocaleLowerCase()
+        if ((event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122) || event.keyCode === 32) {
+            var input = document.getElementById('country_input');
+            input.value = input.value + String.fromCharCode(event.keyCode).toLowerCase();
+          }
     }
   }
 function win(){
@@ -123,6 +125,10 @@ function wrong() {
     var h2 = document.getElementById("lose")
     h2.textContent = "wrong!"
     h2.style.color = "red"
+    h2.classList.add('animated');
+    setTimeout(function() {
+        h2.classList.remove("animated");
+      }, 1000);
     return
 }
 function lose() {
