@@ -169,13 +169,13 @@ function restart() {
 }
 
 export function handleKey(key) {
+
     var input = document.getElementById('country_input');
     if(key == " "){var button = document.getElementById("key-space")}
-    else if(key == "delete"){input.value.slice(0,-1)}
+    else if(key == "delete"){input.value = input.value.slice(0,-1); var button = document.getElementById("key-delete")}
     else{var button = document.getElementById("key-" + key);}
-    
     button.classList.add("button-pressed");
-    if(input.style.display != "" && input.style.display != "none" ){
+    if(input.style.display != "" && input.style.display != "none" && key != "delete"){
         
         input.value =  input.value + key.toLowerCase()
     }
