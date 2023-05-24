@@ -63,6 +63,7 @@ function updateRemainingTime() {
 }
 
 function handleAudioEnd() {
+
     lose()
   }
 
@@ -146,7 +147,7 @@ function lose() {
      var time = document.getElementById("remainingTime")
      time.style.color = "red"
      h1.textContent = "you lost :("
-     time.textContent = "The Country Was: "+clean_correct_country[0].toUpperCase() + clean_correct_country.split(0,1)
+     time.textContent = "The Country Was: "+clean_correct_country[0].toUpperCase() + clean_correct_country.slice(1)
      h1.style.color = "red"
      //restart the game
      restart()
@@ -170,6 +171,7 @@ function restart() {
 export function handleKey(key) {
     var input = document.getElementById('country_input');
     if(key == " "){var button = document.getElementById("key-space")}
+    else if(key == "delete"){input.value.slice(0,-1)}
     else{var button = document.getElementById("key-" + key);}
     
     button.classList.add("button-pressed");
