@@ -27,10 +27,13 @@ header{
   justify-content: center;
   align-items: center;
 }
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6, a{
     font-family: 'Montserrat', sans-serif;
     color:  #C0C0C0;
 
+}
+.bar#mode{
+  cursor: pointer;
 }
 #country_input ,#enter_button{
     display: none;
@@ -118,4 +121,47 @@ body {
   .animated {
     animation: myAnimation 1s linear infinite;
   }
-  
+#title{
+  font-size: 2em;
+  text-align: center;
+position: fixed;
+margin: 0;
+ /* margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 0;
+  padding-right: 0;*/
+}
+
+
+/* Reset default list styles */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* Style the navigation links */
+.bar {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  flex: 0.2;
+  text-decoration: none;
+ /* grid-template-columns: 1fr 1fr 1fr;*/
+ 
+}
+#mode{
+  padding-left: 200px;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px; /* Add some padding for spacing */
+ 
+  margin-bottom: 20px; /* Add margin bottom to create spacing between the navigation and other elements */
+}
+
+

@@ -5,14 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>anthom game!</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="./main.js"></script>
+  <script src="./main.lib.js"></script>
   <script src="https://kit.fontawesome.com/182055fd1f.js" crossorigin="anonymous"></script>
 </head>
 <body  onkeydown="lib.handleKeyDown(event)">
   
   <audio id="anthom_player"></audio>
   <header>
-    <h1>Anthemle</h1>
+    <nav>
+      <h3 class="bar" id="precent">0%</h3>   <h1 id="title" class="bar">Anthemle</h1> <h3 onclick="lib.toggle_easymode()" class="bar" id="mode">change to hard mode</h3>
+    </nav>
+
+    
   </header>
 
   <main>
@@ -22,7 +26,9 @@
     <button onclick="lib.play()" id="play_button">play</button></div>
     <input readonly type="text" id="country_input" placeholder="country name" >
     <h2 id = "lose"></h2>
-    
+    <h3 id="hint1"></h3>
+    <h3 id="hint2"></h3>
+    <h3 id="hint3"></h3>
     <div id="keyboard">
       
       <div>
@@ -56,7 +62,7 @@
         <button onclick="lib.handleKey('B')" id="key-B" class="key">B</button>
         <button onclick="lib.handleKey('N')" id="key-N" class="key">N</button>
         <button onclick="lib.handleKey('M')" id="key-M" class="key">M</button>
-        <button onclick="lib.handleKey('delete')" type="button" data-key="←" id="key-delete" aria-label="backspace" class="key"><i class="fa-solid fa-delete-left" style="color: #C0C0C0;"></i></button>
+        <button onclick="lib.handleKey('delete')" type="button" data-key="←" id="key-delete" aria-label="backspace" class="key"><i class="fa-solid fa-delete-left"></i></button>
       </div> 
       <div>
         <button id = "enter_button" onclick="lib.getInputValue()">enter</button>

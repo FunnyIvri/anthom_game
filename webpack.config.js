@@ -2,10 +2,13 @@ const path = require('path');
 
 module.exports = {
     mode: 'development',
-  entry: './src/index.js', // Entry point of your application
+    entry: {
+      main: './src/index.js', // Existing entry point
+      easymode: './src/easy_mode.js', // Entry point for the new file
+    },
   output: {
     path: path.resolve(__dirname, 'dist'), // Output directory
-    filename: 'main.js', // Output bundle filename
+    filename: '[name].lib.js', // Output bundle filename
     library: 'lib',
   },
   target: 'web', // Specify the target environment as 'web'

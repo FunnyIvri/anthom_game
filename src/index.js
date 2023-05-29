@@ -1,5 +1,9 @@
 import files from "./file_names.json"
+import {easy_mode} from "./easy_mode.js"
+var iseasy =  true
 export function play() {
+ 
+  
     var audio = document.getElementById('anthom_player');
     audio.pause()
     const randomIndex = Math.floor(Math.random() * files.length);
@@ -9,10 +13,13 @@ export function play() {
     answer.id = "answer"
     answer.textContent = files[randomIndex].name
     document.body.appendChild(answer)
-
+  
+    if(iseasy){easy_mode(getcountry())}
     //restart win and time text
     var h1 = document.getElementById("winText")
     var time = document.getElementById("remainingTime")
+    document.getElementById("precent").textContent = "0%"
+    document.getElementById("precent").style.color = "#C0C0C0"
     time.style.removeProperty('color');
     h1.textContent = ""
     h1.style.removeProperty('color');
@@ -73,20 +80,9 @@ function handleAudioEnd() {
 export function getInputValue() {
     var input = document.getElementById('country_input');
     var country = input.value;
-    var answer = document.getElementById('answer');
-    var raw_correct_country = answer.textContent.split(".mp3")[0]
-    var clean_correct_country = []
-    if(country == raw_correct_country){win()}
-    else{
-        for (let i = 0; i < raw_correct_country.length; i++) {
-            const correct_letter = raw_correct_country[i];
-            if(correct_letter == "-"){clean_correct_country.push(" ")}
-            else{clean_correct_country.push(correct_letter)}
-            
-        }
-        if(country == clean_correct_country.join("")){win()}
+        if(getcountry() == country){win()}
         else{wrong()}
-    }
+    
   }
 
 export  function handleKeyDown(event) {
@@ -114,17 +110,20 @@ function win(){
     console.log("you win!")
     var h1 = document.getElementById("winText")
     var time = document.getElementById("remainingTime")
-    time.style.color = "green"
+    document.getElementById("precent").style.color = "#4caf50"
+    time.style.color = "#4caf50"
     h1.textContent = "YOU WIN!"
-    h1.style.color = "green"
+    h1.style.color = "#4caf50"
     //restart the game
     restart()
     
 }
 function wrong() {
+  document.getElementById('country_input').value = ''
     var h2 = document.getElementById("lose")
+    
     h2.textContent = "wrong!"
-    h2.style.color = "red"
+    h2.style.color = "#964c50"
     h2.classList.add('animated');
     setTimeout(function() {
         h2.classList.remove("animated");
@@ -138,23 +137,17 @@ function lose() {
 
     //find the answer
     var answer = document.getElementById('answer');
-    var raw_correct_country = answer.textContent.split(".mp3")[0]
-    var clean_correct_country = []
-    for (let i = 0; i < raw_correct_country.length; i++) {
-        const correct_letter = raw_correct_country[i];
-        if(correct_letter == "-"){clean_correct_country.push(" ")}
-        else{clean_correct_country.push(correct_letter)}
-        
-    }
-    clean_correct_country = clean_correct_country.join("")
+  
+  
      //let the player know they won
      console.log("you lose :(")
      var h1 = document.getElementById("winText")
      var time = document.getElementById("remainingTime")
-     time.style.color = "red"
+     document.getElementById("precent").style.color = "#964c50"
+     time.style.color = "#964c50"
      h1.textContent = "you lost :("
-     time.textContent = "The Country Was: "+clean_correct_country[0].toUpperCase() + clean_correct_country.slice(1)
-     h1.style.color = "red"
+     time.textContent = "The Country Was: " + getcountry()[0].toUpperCase() + getcountry().slice(1)
+     h1.style.color = "#964c50"
      //restart the game
      restart()
 }
@@ -181,7 +174,7 @@ export function handleKey(key) {
     else if(key == "delete"){input.value = input.value.slice(0,-1); var button = document.getElementById("key-delete")}
     else{var button = document.getElementById("key-" + key);}
     button.classList.add("button-pressed");
-    if(input.style.display != "" && input.style.display != "none" && key != "delete"){
+    if(input.style.display != "" && input.style.display != "none" && key != "delete" && key != 13){
         
         input.value =  input.value + key.toLowerCase()
     }
@@ -191,3 +184,27 @@ export function handleKey(key) {
     }, 200);
   }
   
+function getcountry(){
+  var country = document.getElementById("answer").textContent
+  var raw_correct_country = answer.textContent.split(".mp3")[0]
+    var clean_correct_country = []
+    if(country == raw_correct_country){win()}
+    else{
+        for (let i = 0; i < raw_correct_country.length; i++) {
+            const correct_letter = raw_correct_country[i];
+            if(correct_letter == "-"){clean_correct_country.push(" ")}
+            else{clean_correct_country.push(correct_letter)}
+            
+        }}
+  return clean_correct_country.join("")
+}
+export function toggle_easymode() {
+  if(document.getElementById('mode').textContent == "change to hard mode"){
+    document.getElementById('mode').textContent = "change to easy mode"
+    document.getElementById('play_button').style.backgroundColor = "#964c50"
+  }else{
+    document.getElementById('mode').textContent = "change to hard mode"
+    document.getElementById('play_button').style.backgroundColor = "#4caf50"
+  }
+iseasy = !iseasy
+}
