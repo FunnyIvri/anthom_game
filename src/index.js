@@ -53,7 +53,7 @@ audio.addEventListener('ended', handleAudioEnd);
 function updateRemainingTime() {
     var currentTime = audio.currentTime;
     var duration = audio.duration;
-
+    
     // Calculate remaining time in seconds
     var remainingTimeInSeconds = duration - currentTime;
 
@@ -67,6 +67,8 @@ function updateRemainingTime() {
 
     // Update the h1 element with the remaining time
     remainingTimeElement.textContent = 'Time: ' + remainingTimeFormatted;
+    const progressPercentage = (currentTime / duration) * 100;
+    document.getElementById("precent").textContent = Math.round(progressPercentage) + "%"
 }
 
 function handleAudioEnd() {

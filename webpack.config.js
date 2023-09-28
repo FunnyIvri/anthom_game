@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
       main: './src/index.js', // Existing entry point
       easymode: './src/easy_mode.js', // Entry point for the new file
